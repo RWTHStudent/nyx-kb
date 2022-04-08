@@ -9,6 +9,8 @@ on:
       - main
     paths:
       - 'firmware/**'
+  schedule:
+    - cron: '0 0 * * SAT'
   workflow_dispatch:
 
 name: Build
@@ -17,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: docker.io/zmkfirmware/zmk-build-arm:2.5
+      image: docker.io/zmkfirmware/zmk-build-arm:stable
     name: Build
     strategy:
       fail-fast: false
@@ -63,11 +65,6 @@ jobs:
         run: west zephyr-export
       - name: West Build (${{ steps.variables.outputs.display-name }})
         run: west build -s zmk/app -b ${{ matrix.board }} -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/firmware" ${{ steps.variables.outputs.extra-cmake-args }} ${{ matrix.cmake-args }}
-      - name: ${{ steps.variables.outputs.display-name }} DTS File
-        if: ${{ always() }}
-        run: |
-          if [ -f "build/zephyr/${{ matrix.board }}.dts.pre.tmp" ]; then cat -n build/zephyr/${{ matrix.board }}.dts.pre.tmp; fi
-          if [ -f "build/zephyr/zephyr.dts" ]; then cat -n build/zephyr/zephyr.dts; fi
       - name: ${{ steps.variables.outputs.display-name }} Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename artifacts
