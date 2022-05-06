@@ -29,13 +29,7 @@ jobs:
         shield:
           - nyx_left
           - nyx_right
-  include:
-  - board: nice_nano_v2
-    shield: nyx_left
-  - board: nice_nano_v2
-    shield: nyx_right
-  - board: nice_nano_v2
-    shield: settings_reset
+          - settings_reset
     steps:
       - name: Prepare variables
         id: variables
