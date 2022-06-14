@@ -38,7 +38,7 @@
             // |         |      |      | LGUI   | FN      | LCTL    | LALT            | SPC            | RET        | RCTL    | RALT    |       |        |         |
             bindings = <
                 &kp ESC    &kp N1    &kp N2    &kp N3     &kp N4    &kp N5    &kp N6            &kp N7      &kp N8    &kp N9    &kp N0    &kp MINUS  &kp EQUAL  &kp BSPC
-                &kp TAB    &kp Q     &kp W     &kp E      &kp R     &kp T     &kp FSLH          &kp Y       &kp U     &kp I     &kp O     &kp P      &kp LBKT   &kp BSLH    
+                &kp TAB    &kp Q     &kp W     &kp E      &kp R     &kp T     &kp KP_PLUS       &kp Y       &kp U     &kp I     &kp O     &kp P      &kp LBKT   &kp BSLH    
                 &kp LSHFT  &kp A     &kp S     &kp D      &kp F     &kp G     &mo UPPER         &kp H       &kp J     &kp K     &kp L     &kp SEMI   &kp APOS   &kp RET
                 &kp LSHFT  &kp DEL   &kp Z     &kp X      &kp C     &kp V     &mo LOWER         &kp B       &kp N     &kp M     &kp COMMA &kp DOT    &kp FSLH   &kp LS(F10)
                                                &kp LCTRL  &kp LGUI  &kp LALT  &kp RALT          &kp SPACE   &kp RALT  &mo LOWER &mo UPPER
@@ -51,12 +51,12 @@
             // |      |      |        |         |        |     |      |      |         |        |        |         |       |       |
             // |      |      |        |         |        |     |      |      |         |        |        |         |       |       |
             // |      |      |        |         |        |     |      |      |         |        |        |         |       |       |
-            bindings = <
-                &kp GRAVE &kp F1 &kp F2   &kp F3    &kp F4  &kp F5  &kp F6        &kp F7   &kp F8    &kp F9     &kp F10    &kp F11     &kp F12     &trans
-                &trans    &trans &trans   &trans    &trans  &trans  &trans        &trans   &trans    &trans     &trans     &trans      &trans      &trans
-                &trans    &trans &trans   &trans    &trans  &trans  &trans        &trans   &trans    &kp HOME   &kp UP     &kp END     &kp PG_UP   &trans
-                &trans    &trans &trans   &trans    &trans  &trans  &trans        &trans   &trans    &kp LEFT   &kp DOWN   &kp RIGHT   &kp PG_DN   &kp PSCRN
-                                          &trans    &trans  &trans  &trans        &trans   &trans    &trans     &trans
+            bindings = <     
+                &kp GRAVE &kp F1        &kp F2   &kp F3    &kp F4  &kp F5  &kp F6             &kp F7   &kp F8    &kp F9     &kp F10    &kp F11     &kp F12     &trans
+                &trans    &trans        &trans   &trans    &trans  &trans  &kp ASTERISK       &trans   &trans    &trans     &trans     &trans      &trans      &trans
+                &trans    &trans        &trans   &trans    &trans  &trans  &trans             &trans   &trans    &kp HOME   &kp UP     &kp END     &kp PG_UP   &trans
+                &trans    &kp LS(COMMA) &trans   &trans    &trans  &trans  &trans             &trans   &trans    &kp LEFT   &kp DOWN   &kp RIGHT   &kp PG_DN   &kp PSCRN
+                                                 &trans    &trans  &trans  &trans             &trans   &trans    &trans     &trans
 
             >;
         };
@@ -67,12 +67,12 @@
             // |          |            |            |            |            |            |      |      |      |      |      |      |      |      |
             // |          |            |            |            |            |            |      |      |      |      |      |      |      |      |
             // |          |            |            |            |            |            |      |      |      |      |      |      |      |      |
-            bindings = <
-                &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3       &bt BT_SEL 4 &trans        &trans      &trans        &kp KP_N7      &kp KP_N8   &kp KP_N9     &kp KP_DIVIDE     &trans
-                &out OUT_USB &out OUT_BLE &trans       &trans       &trans             &trans       &trans        &trans      &trans        &kp KP_N4      &kp KP_N5   &kp KP_N6     &kp KP_MULTIPLY   &trans
-                &trans       &trans       &trans       &trans       &trans             &trans       &trans        &trans      &trans        &kp KP_N1      &kp KP_N2   &kp KP_N3     &kp KP_MINUS      &trans
-                &trans       &trans       &trans       &trans       &trans             &trans       &trans        &trans      &trans        &kp KP_N0      &kp KP_DOT  &kp LS(N0)    &kp KP_PLUS       &trans
-                                                       &kp C_PREV   &kp C_PLAY_PAUSE   &kp C_NEXT   &trans        &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP   &trans
+            bindings = <       
+                &kp LA(0176) &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3       &bt BT_SEL 4 &trans            &trans      &trans        &kp KP_N7      &kp KP_N8   &kp KP_N9     &kp KP_DIVIDE     &trans
+                &bt BT_CLR   &out OUT_USB &out OUT_BLE  &trans       &trans             &trans       &kp LS(GRAVE)     &trans      &trans        &kp KP_N4      &kp KP_N5   &kp KP_N6     &kp KP_MULTIPLY   &trans
+                &trans       &trans        &trans       &trans       &trans             &trans       &trans            &trans      &trans        &kp KP_N1      &kp KP_N2   &kp KP_N3     &kp KP_MINUS      &trans
+                &trans       &kp LS(DOT)   &trans       &trans       &trans             &trans       &trans            &trans      &trans        &kp KP_N0      &kp KP_DOT  &kp LS(N0)    &kp KP_PLUS       &trans
+                                                        &kp C_PREV   &kp C_PLAY_PAUSE   &kp C_NEXT   &trans            &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP   &trans
 
             >;
         };
